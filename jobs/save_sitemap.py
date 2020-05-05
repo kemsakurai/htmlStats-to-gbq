@@ -59,7 +59,7 @@ def save_sitemap(url_object):
             sitemap.domain = parse_result.netloc
             sitemap.path = urllib.parse.unquote(parse_result.path)
             sitemap.status = SitemapTaskStatus.before_html_stats
-            sitemap.add(sitemap)
+            session.add(sitemap)
         elif sitemap.lastmod is None or sitemap.lastmod > strptime(url.lastmod.text) if url.lastmod else None :
             sitemap.lastmod = strptime(url.lastmod.text) if url.lastmod else None
             sitemap.status = SitemapTaskStatus.before_html_stats
