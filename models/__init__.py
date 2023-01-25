@@ -35,7 +35,7 @@ class Sitemap(db.Model):
     path = db.Column(db.String(length=2083), nullable=False)
     lastmod = db.Column(db.DATETIME(), nullable=True)
     change_freq = db.Column(db.String(length=10), nullable=True)
-    priority = db.Column(db.DECIMAL(3, 2), nullable=True)
+    priority = db.Column(db.String(length=5), nullable=True)
     status = db.Column(db.Enum(SitemapTaskStatus))
 
     @classmethod
@@ -74,7 +74,7 @@ class HtmlStats(db.Model):
     number_of_image = db.Column(db.INTEGER, nullable=False)
     number_of_a = db.Column(db.INTEGER, nullable=False)
     number_of_iframe = db.Column(db.INTEGER, nullable=False)
-
+    
     @classmethod
     def get_by_loc(cls, loc):
         return db.session.query(cls).filter(cls.loc == loc).first()
